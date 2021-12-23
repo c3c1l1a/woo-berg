@@ -19,12 +19,12 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	registerBlockType( 'blocktest/login', {
+	registerBlockType( 'woo-berg/login', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Login', 'blocktest' ),
+		title: __( 'Login', 'woo-berg' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -64,7 +64,7 @@
 			return el(
 				'p',
 				{ className: props.className },
-				__( 'Hello from the editor!', 'blocktest' )
+				__( 'Hello from the editor!', 'woo-berg' )
 			);
 		},
 
@@ -79,7 +79,7 @@
 			return el(
 				'p',
 				{},
-				__( 'Hello from the saved content!', 'blocktest' )
+				__( 'Hello from the saved content!', 'woo-berg' )
 			);
 		}
 	} );

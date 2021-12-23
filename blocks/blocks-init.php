@@ -3,7 +3,7 @@
  * Functions to register client-side assets (scripts and stylesheets) for the
  * Gutenberg block.
  *
- * @package blocktest
+ * @package woo-berg
  */
 
 /**
@@ -12,17 +12,24 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
-function login_block_init() {
+function blocks_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 	$dir = dirname( __FILE__ );
 
-	$index_js = 'login/index.js';
+	
+	/*
+	 * 
+	 * Login Block 
+	 * 
+	 * 
+	 * */
+	$login_block_js = 'login/index.js';
 	wp_register_script(
 		'login-block-editor',
-		plugins_url( $index_js, __FILE__ ),
+		plugins_url( $login_block_js, __FILE__ ),
 		array(
 			'wp-blocks',
 			'wp-i18n',
@@ -30,6 +37,7 @@ function login_block_init() {
 		),
 		filemtime( "$dir/$index_js" )
 	);
+
 
 	$editor_css = 'login/editor.css';
 	wp_register_style(
@@ -47,10 +55,37 @@ function login_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'blocktest/login', array(
+	register_block_type( 'woo-berg/login', array(
 		'editor_script' => 'login-block-editor',
 		'editor_style'  => 'login-block-editor',
 		'style'         => 'login-block',
 	) );
+
+
+	/*
+	 * 
+	 * Product Description Block 
+	 * 
+	 * 
+	 * */
+
+	$product_desciption_block_js = 'product-description/index.js';
+	wp_register_script(
+		'product-description-block-editor',
+		plugins_url( $product_desciption_block_js, __FILE__ ),
+		array(
+			'wp-blocks',
+			'wp-i18n',
+			'wp-element',
+			'wp-editor',
+		),
+		filemtime( "$dir/$index_js" )
+	);
+
+	register_block_type('woo-berg/product-description', array(
+		'editor_script' => 'product-description-block-editor'
+	));
 }
-add_action( 'init', 'login_block_init' );
+
+
+add_action( 'init', 'blocks_init' );
