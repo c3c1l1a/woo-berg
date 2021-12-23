@@ -35,7 +35,7 @@ function blocks_init() {
 			'wp-i18n',
 			'wp-element',
 		),
-		filemtime( "$dir/$index_js" )
+		filemtime( "$dir/$login_block_js" )
 	);
 
 
@@ -79,7 +79,7 @@ function blocks_init() {
 			'wp-element',
 			'wp-editor',
 		),
-		filemtime( "$dir/$index_js" )
+		filemtime( "$dir/$product_desciption_block_js" )
 	);
 
 	register_block_type('woo-berg/product-description', array(
