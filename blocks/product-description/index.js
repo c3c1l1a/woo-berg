@@ -16,9 +16,7 @@
 		
 		attributes: {
 			content: {
-				type: 'array',
-				source: 'children',
-				selector: 'p'
+				type: 'string',
 			}
 		},
 
@@ -40,15 +38,7 @@
 			);
 		},
 		save: function( props ){
-			console.log(props.attributes);
-			var blockProps = useBlockProps.save();
-			return el(
-				RichText.Content,
-				Object.assign(blockProps, {
-					tagName: 'p',
-					value: props.attributes.content
-				})
-			);
+			return null;
 		}, 
 	});
 
