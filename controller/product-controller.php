@@ -45,6 +45,22 @@ function the_content($content) {
 
 add_filter("the_content","wooberg\\the_content",11,1);
 
+function template_include($t) {
+	$post=get_post();
+
+	if ($post->post_type=="product"
+			&& get_post_meta($post->ID,"wooberg_template_post_id",TRUE)) {
+
+		$t=locate_template("page.php");
+		if (!$t)
+			$t=locate_template("index.php");
+	}
+
+	return $t;
+}
+
+add_filter("template_include","wooberg\\template_include",11,1);
+
 function save_post($postId, $post, $update) {
 	if ($post &&
 			$post->post_type=="product" &&
