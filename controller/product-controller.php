@@ -40,7 +40,12 @@ function the_content($content) {
 
 	$template_post=get_post($tid);
 
-	return do_shortcode($template_post->post_content);
+	if (has_blocks($template_post->post_content)){
+		$blocks = parse_blocks($template_post->post_content);
+		foreach($blocks as $block){
+			echo render_block($block);
+		}
+	}
 }
 
 add_filter("the_content","wooberg\\the_content",11,1);

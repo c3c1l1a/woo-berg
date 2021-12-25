@@ -11,6 +11,7 @@
  * the corresponding context.
  *
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
+ * 
  */
 function blocks_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
@@ -83,8 +84,17 @@ function blocks_init() {
 	);
 
 	register_block_type('woo-berg/product-description', array(
-		'editor_script' => 'product-description-block-editor'
+		'editor_script' => 'product-description-block-editor',
+		'render_callback' => 'render_product_description'
 	));
+}
+
+function render_product_description( $block_attributes, $content ){
+	$post = get_post();
+	if (!$post || $post->post_type!="product")
+		return "The description will show here";
+
+	return $post->post_content;
 }
 
 
