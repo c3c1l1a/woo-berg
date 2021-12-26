@@ -87,6 +87,32 @@ function blocks_init() {
 		'editor_script' => 'product-description-block-editor',
 		'render_callback' => 'render_product_description'
 	));
+
+
+
+	/*
+	*
+	*	Woo Berg single product template
+	*	
+	*/
+	$wb_single_product_template = 'wb-single-product-template/index.js';
+	wp_register_script(
+		'wb-single-product-template',
+		plugins_url( $wb_single_product_template, __FILE__ ),
+		array(
+			'wp-blocks',
+			'wp-i18n',
+			'wp-element',
+			'wp-editor',
+		),
+		filemtime( "$dir/$wb_single_product_template" )
+	);
+
+	register_block_type('woo-berg/wb-single-product-template', array(
+		'editor_script' => 'wb-single-product-template',
+		//'render_callback' => 'render_product_description'
+	));
+
 }
 
 function render_product_description( $block_attributes, $content ){
