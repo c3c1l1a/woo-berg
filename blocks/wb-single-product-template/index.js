@@ -6,8 +6,20 @@
 	var InnerBlocks = blockEditor.InnerBlocks;
 
 	const BLOCKS_TEMPLATE = [
-	    [ 'core/image', {} ],
-	    [ 'core/paragraph', { placeholder: 'Image Details' } ],
+	    [ 'core/columns', {}, 
+	    	[
+	    		[ 'core/column', {}, 
+	    			[
+	    				[ 'core/image', {}, ],
+	    			]
+	    		],
+	    		[ 'core/column', {}, 
+	    			[
+	    				[ 'woo-berg/product-description']
+	    			]
+	    		]
+	    	]
+	    ]
 	];
 
 	registerBlockType('woo-berg/wb-single-product-template', {
