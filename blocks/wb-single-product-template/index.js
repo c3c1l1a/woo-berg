@@ -35,8 +35,8 @@
 				}
 			);
 		},
-		save: function(props){
-			return null;
+		save: function( props ){
+			return el( InnerBlocks.Content , {});
 		}
 
 	});
