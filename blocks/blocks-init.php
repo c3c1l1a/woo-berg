@@ -13,6 +13,11 @@
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
  * 
  */
+
+
+require_once __DIR__."/product-image/register-product-image-block.php";
+
+
 function blocks_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -112,6 +117,17 @@ function blocks_init() {
 		'editor_script' => 'wb-single-product-template',
 		//'render_callback' => 'render_product_description'
 	));
+
+
+	/*
+	*
+	*
+	* 	Woo Berg Product Image
+	*
+	*
+	*/
+
+	register_image_block();
 
 }
 
