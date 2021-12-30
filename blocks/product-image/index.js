@@ -13,13 +13,11 @@
 		description: __('Edit woo-commerce product image', 'woo-berg'),
 		icon: 'text',
 		keywords: [ __( 'woo' ), __( 'product-image' ) ],
-		
 
 		edit: function( props ){
-			var src = 'http://lorempixel.com/400/200/';
 
 			return el( 'img', {
-				src: src,
+				src: js_data.featured_image,
 			} );
 
 		},

@@ -19,9 +19,17 @@ function register_image_block(){
         filemtime( "$dir/$product_image_block_js" )
     );
 
+    wp_localize_script(
+        'product-image-block-editor',
+        'js_data',
+        array(
+            'featured_image' => plugins_url( 'assets/woocommerce-placeholder.png', __FILE__ )
+        )
+    );
+
     register_block_type('woo-berg/product-image', array(
         'editor_script' => 'product-image-block-editor',
-        'render_callback' => 'render_product_image'
+        //'render_callback' => 'render_product_image'
     ));
 }
 
