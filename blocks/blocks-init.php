@@ -115,7 +115,6 @@ function blocks_init() {
 
 	register_block_type('woo-berg/wb-single-product-template', array(
 		'editor_script' => 'wb-single-product-template',
-		//'render_callback' => 'render_product_description'
 	));
 
 
@@ -133,9 +132,11 @@ function blocks_init() {
 
 function render_product_description( $block_attributes, $content ){
 	$post = get_post();
+
 	if (!$post || $post->post_type!="product")
 		return "The description will show here";
 
+	 
 	return $post->post_content;
 }
 

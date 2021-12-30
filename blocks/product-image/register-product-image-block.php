@@ -7,6 +7,7 @@
 
 function register_image_block(){
    $product_image_block_js = 'index.js';
+   $dir = dirname( __FILE__ );
     wp_register_script(
         'product-image-block-editor',
         plugins_url( $product_image_block_js, __FILE__ ),
@@ -29,7 +30,7 @@ function register_image_block(){
 
     register_block_type('woo-berg/product-image', array(
         'editor_script' => 'product-image-block-editor',
-        //'render_callback' => 'render_product_image'
+        'render_callback' => 'render_product_image'
     ));
 }
 
@@ -37,7 +38,11 @@ function render_product_image( $block_attributes, $content ){
     $post = get_post();
     
     if (!$post || $post->post_type!="product")
-        return "The description will show here";
+        return 'The Image will show here';
 
-    return $post->post_content;
+   $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+   $src=$image[0];
+   
+   return "<img src=\"$src\"/>";
+
 }

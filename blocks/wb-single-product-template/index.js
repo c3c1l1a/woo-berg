@@ -10,7 +10,7 @@
 	    	[
 	    		[ 'core/column', {}, 
 	    			[
-	    				[ 'core/image', {}, ],
+	    				[ 'woo-berg/product-image', {}, ],
 	    			]
 	    		],
 	    		[ 'core/column', {}, 

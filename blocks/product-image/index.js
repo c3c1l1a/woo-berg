@@ -14,6 +14,7 @@
 		icon: 'text',
 		keywords: [ __( 'woo' ), __( 'product-image' ) ],
 
+
 		edit: function( props ){
 
 			return el( 'img', {
@@ -22,6 +23,7 @@
 
 		},
 		save: function( props ){
+			console.log(props);
 			return null;
 		}, 
 	});
