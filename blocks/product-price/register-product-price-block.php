@@ -37,7 +37,6 @@ function render_product_price( $block_attributes, $content ){
 
     $currency = get_woocommerce_currency_symbol();
 
-    error_log(print_r($currency, true));
 
    return "<p><span>$currency</span><span>$price</span></p>";
 

@@ -35,6 +35,7 @@ function the_content($content) {
 	$post=get_post();
 	$tid=get_post_meta($post->ID,"wooberg_template_post_id",TRUE);
 
+
 	if (!$tid)
 		return $content;
 
@@ -53,10 +54,14 @@ add_filter("the_content","wooberg\\the_content",11,1);
 function template_include($t) {
 	$post=get_post();
 
+
 	if ($post->post_type=="product"
 			&& get_post_meta($post->ID,"wooberg_template_post_id",TRUE)) {
 
+		$post->post_title = '';
+
 		$t=locate_template("page.php");
+
 		if (!$t)
 			$t=locate_template("index.php");
 	}
