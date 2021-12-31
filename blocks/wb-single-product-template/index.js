@@ -15,6 +15,7 @@
 	    		],
 	    		[ 'core/column', {}, 
 	    			[
+	    				[ 'woo-berg/product-price' ],
 	    				[ 'woo-berg/product-description']
 	    			]
 	    		]

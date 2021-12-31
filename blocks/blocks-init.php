@@ -16,7 +16,7 @@
 
 
 require_once __DIR__."/product-image/register-product-image-block.php";
-
+require_once __DIR__."/product-price/register-product-price-block.php";
 
 function blocks_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
@@ -118,15 +118,10 @@ function blocks_init() {
 	));
 
 
-	/*
-	*
-	*
-	* 	Woo Berg Product Image
-	*
-	*
-	*/
-
 	register_image_block();
+	register_price_block();
+
+
 
 }
 

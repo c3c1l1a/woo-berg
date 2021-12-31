@@ -23,7 +23,6 @@
 
 		},
 		save: function( props ){
-			console.log(props);
 			return null;
 		}, 
 	});
