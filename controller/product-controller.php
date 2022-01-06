@@ -109,7 +109,7 @@ add_action("add_meta_boxes","wooberg\\add_meta_boxes");
 
 
 
-function remove_featured_image_on_product_page( $html, $post_id, $post_image_id ) {	
+function post_thumbnail_html( $html, $post_id, $post_image_id ) {	
 	$post=get_post();
 	
 	if (is_single() && $post->post_type=="product"){
@@ -118,12 +118,12 @@ function remove_featured_image_on_product_page( $html, $post_id, $post_image_id 
 
 	return $html;
 }
-add_filter( 'post_thumbnail_html', 'wooberg\\remove_featured_image_on_product_page', 10, 3 );
+add_filter( 'post_thumbnail_html', 'wooberg\\post_thumbnail_html', 10, 3 );
 
 
 
 
-function remove_product_title($title, $id) {
+function the_title($title, $id) {
 	$post=get_post();
 	
 	if (in_the_loop() && is_single() && $post->post_type=="product"){
@@ -132,12 +132,12 @@ function remove_product_title($title, $id) {
 
 	return $title;
 }
-add_filter('the_title', 'wooberg\\remove_product_title', 10, 2);
+add_filter('the_title', 'wooberg\\the_title', 10, 2);
 
 
 function get_the_archive_title($title){
 	$post=get_post();
-	
+
 	if (is_single() && $post->post_type=="product"){
 
 		return null;
@@ -146,7 +146,7 @@ function get_the_archive_title($title){
 	return $title;
 	
 }
-add_filter('get_the_archive_title', 'wooberg\\get_the_archive_title', 9);
+add_filter('get_the_archive_title', 'wooberg\\get_the_archive_title');
 
 
 
