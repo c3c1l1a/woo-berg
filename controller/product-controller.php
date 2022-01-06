@@ -4,29 +4,9 @@ namespace wooberg;
 
 require_once __DIR__."/../utils/wp-util.php";
 
-function shortcode_description($attrs) {
-	$post=get_post();
-	if (!$post || $post->post_type!="product")
-		return "The product description will show here";
-
-	return do_shortcode($post->post_content);
-}
-
-add_shortcode("wooberg_description","wooberg\\shortcode_description");
-
-function shortcode_price($attrs) {
-	$post=get_post();
-	if (!$post || $post->post_type!="product")
-		return "The price will show here";
-
-	$price=get_post_meta($post->ID,"_price",TRUE);
-
-	return $price;
-}
-
-add_shortcode("wooberg_price","wooberg\\shortcode_price");
 
 function the_content($content) {
+
 	if (!in_the_loop() ||
 			!is_main_query() ||
 			!is_singular("product"))
@@ -40,36 +20,48 @@ function the_content($content) {
 		return $content;
 
 	$template_post=get_post($tid);
-
+	
+	$content = '';
 	if (has_blocks($template_post->post_content)){
 		$blocks = parse_blocks($template_post->post_content);
 		foreach($blocks as $block){
-			echo render_block($block);
+			$content .= render_block($block);
+			
 		}
 	}
+
+
+	return $content;
 }
 
-add_filter("the_content","wooberg\\the_content",11,1);
+add_filter("the_content","wooberg\\the_content",20,1);
 
 function template_include($t) {
+
 	$post=get_post();
 
+	remove_filter('pre_wp_nav_menu', 'gutenberg_output_block_nav_menu', 10);
+	remove_filter('the_title', 'capital_P_dangit', 11);
 
 	if ($post->post_type=="product"
 			&& get_post_meta($post->ID,"wooberg_template_post_id",TRUE)) {
 
-		$post->post_title = '';
-
-		$t=locate_template("page.php");
+		$t = get_query_template( 'page' );
 
 		if (!$t)
-			$t=locate_template("index.php");
+			$t=get_query_template('index');
+
+
+		return $t;
+
 	}
 
 	return $t;
 }
 
-add_filter("template_include","wooberg\\template_include",11,1);
+add_filter("template_include","wooberg\\template_include", 99999,1);
+
+
 
 function save_post($postId, $post, $update) {
 	if ($post &&
@@ -83,6 +75,8 @@ function save_post($postId, $post, $update) {
 }
 
 add_action("save_post","wooberg\\save_post",10,3);
+
+
 
 function product_template_metabox() {
 	$post=get_post();
@@ -111,3 +105,58 @@ function add_meta_boxes() {
 }
 
 add_action("add_meta_boxes","wooberg\\add_meta_boxes");
+
+
+
+
+function remove_featured_image_on_product_page( $html, $post_id, $post_image_id ) {	
+	$post=get_post();
+	
+	if (is_single() && $post->post_type=="product"){
+		return null;
+	}
+
+	return $html;
+}
+add_filter( 'post_thumbnail_html', 'wooberg\\remove_featured_image_on_product_page', 10, 3 );
+
+
+
+
+function remove_product_title($title, $id) {
+	$post=get_post();
+	
+	if (in_the_loop() && is_single() && $post->post_type=="product"){
+		return null;
+	}
+
+	return $title;
+}
+add_filter('the_title', 'wooberg\\remove_product_title', 10, 2);
+
+
+function get_the_archive_title($title){
+	$post=get_post();
+	
+	if (is_single() && $post->post_type=="product"){
+
+		return null;
+	}
+
+	return $title;
+	
+}
+add_filter('get_the_archive_title', 'wooberg\\get_the_archive_title', 9);
+
+
+
+
+
+
+
+
+
+
+
+
+
