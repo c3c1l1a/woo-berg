@@ -17,6 +17,7 @@
 
 require_once __DIR__."/product-image/register-product-image-block.php";
 require_once __DIR__."/product-price/register-product-price-block.php";
+require_once __DIR__."/add-to-cart/add-to-cart-block.php";
 
 function blocks_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
@@ -120,9 +121,7 @@ function blocks_init() {
 
 	register_image_block();
 	register_price_block();
-
-
-
+	register_add_to_cart_block();
 }
 
 function render_product_description( $block_attributes, $content ){
