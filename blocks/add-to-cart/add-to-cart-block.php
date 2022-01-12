@@ -20,6 +20,9 @@ function register_add_to_cart_block(){
         filemtime( "$dir/$add_to_cart_block_js" )
     );
 
+   
+
+
     $editor_css = '/editor.css';
     wp_register_style(
         'add-to-cart-block-editor',
@@ -77,5 +80,23 @@ function render_add_to_cart( $block_attributes, $content ){
         "<button style=\"$style\">
             Add To cart
         </button>";
-
 }
+
+
+
+
+function front_end_render($hook) {
+    $dir = dirname( __FILE__ );
+    $render_js = 'render.js';
+    
+    wp_enqueue_script(
+        'front-end-render',
+        plugins_url( $render_js, __FILE__ ),
+        array(
+            'jquery'
+        ),
+        filemtime( "$dir/$render_js" )
+    );
+ 
+}
+add_action('wp_enqueue_scripts', 'front_end_render');
