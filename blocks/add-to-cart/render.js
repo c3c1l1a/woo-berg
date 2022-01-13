@@ -1,7 +1,15 @@
 ( function( $ ){
-	console.log($);
-	var myButton = document.getElementsByClassName( 'add-to-cart' );
+	
+	$(document).ready(function(){
+		$('.wooberg-add-to-cart-btn').on('click', woobergAddToCartBtnHandler);
+
+		function woobergAddToCartBtnHandler(event){
+			alert('clicked');
+		}
+	});
+
+
 	
 })(
-	window.jQuery
+	jQuery
 );

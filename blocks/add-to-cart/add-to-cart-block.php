@@ -55,7 +55,7 @@ function register_add_to_cart_block(){
         'attributes' => array(
             'buttonStyleClasses' => array(
                 'type' => 'string',
-                'default' => 'btn btn-primary w-50'
+                'default' => 'wooberg-add-to-cart-btn btn btn-primary w-50'
             ), 
         ),
     ));
