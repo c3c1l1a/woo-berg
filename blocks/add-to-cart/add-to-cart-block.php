@@ -53,8 +53,9 @@ function register_add_to_cart_block(){
         'editor_script' => 'add-to-cart-block-editor',
         'render_callback' => 'render_add_to_cart',
         'attributes' => array(
-            'style' => array(
-                'type' => 'object',
+            'buttonStyleClasses' => array(
+                'type' => 'string',
+                'default' => 'btn btn-primary w-50'
             ), 
         ),
     ));
@@ -70,16 +71,17 @@ function render_add_to_cart( $block_attributes, $content ){
 
     //$currency = get_woocommerce_currency_symbol();
     
-    $style = '';
+    //$style = '';
 
-    foreach ($block_attributes['style'] as $key => $value){
-        $style .= "$key: $value;";
-    }
-    
-   return 
-        "<button style=\"$style\">
+    //foreach ($block_attributes['style'] as $key => $value){
+      //  $style .= "$key: $value;";
+    //}
+    $buttonStyleClasses = $block_attributes['buttonStyleClasses'];
+    error_log(print_r($buttonStyleClasses, true));
+    return 
+        "<a class=\"$buttonStyleClasses\">
             Add To cart
-        </button>";
+        </a>";
 }
 
 

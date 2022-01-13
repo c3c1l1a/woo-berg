@@ -122,6 +122,9 @@ function blocks_init() {
 	register_image_block();
 	register_price_block();
 	register_add_to_cart_block();
+
+	
+
 }
 
 function render_product_description( $block_attributes, $content ){
@@ -136,3 +139,18 @@ function render_product_description( $block_attributes, $content ){
 
 
 add_action( 'init', 'blocks_init' );
+
+
+
+function global_plugin_styles(){
+	$global_plugin_styles = 'assets/global_plugin_styles.css';
+	
+	wp_enqueue_style(
+		'global_plugin_styles',
+		plugins_url( $global_plugin_styles, __FILE__ ),
+		array(),
+		//filemtime( "$dir/$global_plugin_styles" )
+	);
+}
+
+add_action( 'enqueue_block_assets', 'global_plugin_styles' );

@@ -17,24 +17,27 @@
 		icon: 'text',
 		keywords: [ __( 'woo' ), __( 'add to cart' ) ],
 
-	
+		attributes : {
+			buttonStyleClasses: {
+				type: 'string', 
+				default: 'btn btn-primary w-50'
+			},
+		},
 
 		edit: function( props ){
 	
 			var blockProps = useBlockProps();
 			//var content = props.attributes.content;
 
-			attributes = {
-				'style': {
-					type: 'object', 
-				},
-			}
+			
 
 			function onChange_background_color(bg_color){
 				props.setAttributes({ 'style': {
 					'background-color': bg_color,
 				} });
 			}
+			
+		
 			return [
 				el(
 					'div',
@@ -60,9 +63,9 @@
 					),
 
 					el (
-						'button' ,
+						'a' ,
 						{ 
-							'style' : props.attributes.style,
+							className : props.attributes.buttonStyleClasses,
 						},
 						'Add to cart'
 					)
