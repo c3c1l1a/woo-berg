@@ -144,7 +144,7 @@ add_action( 'init', 'blocks_init' );
 
 function global_plugin_styles(){
 	$global_plugin_styles = 'assets/global_plugin_styles.css';
-	
+
 	wp_enqueue_style(
 		'global_plugin_styles',
 		plugins_url( $global_plugin_styles, __FILE__ ),

@@ -55,7 +55,7 @@ function register_add_to_cart_block(){
         'attributes' => array(
             'buttonStyleClasses' => array(
                 'type' => 'string',
-                'default' => 'wooberg-add-to-cart-btn btn btn-primary w-50'
+                'default' => 'wooberg-button wooberg-add-to-cart-button'
             ), 
         ),
     ));
@@ -64,41 +64,56 @@ function register_add_to_cart_block(){
 function render_add_to_cart( $block_attributes, $content ){
     $post = get_post();
     
-    //if (!$post || $post->post_type!="product")
-    //    return 'Add to cart will show here';
+    $buttonStyleClasses = $block_attributes['buttonStyleClasses'];
+    
+    if (!$post || $post->post_type!="product")
+        return 
+            "<a class=\"$buttonStyleClasses\">
+                <span>
+                    Button
+                </span>
+        </a>";
+ 
+    $product_id = get_the_ID();
+
+    
+    
+    return 
+        "<a class=\"$buttonStyleClasses\" data-product-id=$product_id>
+            <span>
+                Add To cart
+            </span>
+        </a>";
 
     //$price = get_post_meta( get_the_ID(), '_regular_price', true);
 
     //$currency = get_woocommerce_currency_symbol();
-    
-    //$style = '';
 
-    //foreach ($block_attributes['style'] as $key => $value){
-      //  $style .= "$key: $value;";
-    //}
-    $buttonStyleClasses = $block_attributes['buttonStyleClasses'];
-    error_log(print_r($buttonStyleClasses, true));
-    return 
-        "<a class=\"$buttonStyleClasses\">
-            Add To cart
-        </a>";
 }
 
 
 
 
-function front_end_render($hook) {
+function add_to_cart_button_js($hook) {
     $dir = dirname( __FILE__ );
-    $render_js = 'render.js';
+    $add_to_cart_button_js = 'add-to-cart-button.js';
     
     wp_enqueue_script(
-        'front-end-render',
-        plugins_url( $render_js, __FILE__ ),
+        'add_to_cart_button_js',
+        plugins_url( $add_to_cart_button_js, __FILE__ ),
         array(
             'jquery'
         ),
-        filemtime( "$dir/$render_js" )
+        filemtime( "$dir/$add_to_cart_button_js" )
     );
  
 }
-add_action('wp_enqueue_scripts', 'front_end_render');
+add_action('wp_enqueue_scripts', 'add_to_cart_button_js');
+
+
+
+function wooberg_ajax_add_to_cart(){
+    error_log(print_r('testing again', true));
+}
+add_action('wp_ajax_wooberg_ajax_add_to_cart', 'wooberg_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_wooberg_ajax_add_to_cart', 'wooberg_ajax_add_to_cart');

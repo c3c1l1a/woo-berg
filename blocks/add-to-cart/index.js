@@ -20,7 +20,7 @@
 		attributes : {
 			buttonStyleClasses: {
 				type: 'string', 
-				default: 'wooberg-add-to-cart-btn btn btn-primary w-50'
+				default: 'wooberg-button wooberg-add-to-cart-button'
 			},
 		},
 
@@ -67,7 +67,12 @@
 						{ 
 							className : props.attributes.buttonStyleClasses,
 						},
-						'Add to cart'
+						el (
+							'span',
+							{},
+							'Add to cart'
+						)
+						
 					)
 				)
 				
@@ -81,5 +86,14 @@
 } )(
 	window.wp.blocks, window.wp.blockEditor, window.wp.element, window.wp.components
 );
+
+
+
+
+
+
+
+
+
 
 
