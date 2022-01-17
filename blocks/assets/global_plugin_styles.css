@@ -1,6 +1,10 @@
 
 
+/*
 
+  Wooberg Button
+
+*/
 
 .wooberg-button {
 
@@ -20,4 +24,19 @@
   background: #bfa56d;
   cursor: pointer;
 
+}
+
+
+/*
+
+  Wooberg Cart
+*/
+
+
+.wooberg-cart  {
+  position: relative;
+  width: 370px;
+  height: 430px;
+
+  background: red;
 }

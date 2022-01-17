@@ -21,10 +21,40 @@ function register_cart_block(){
         filemtime("$dir/$cart_block_js")
    );
 
+   $editor_css = 'editor.css';
+   wp_register_style(
+        'cart-block-css',
+        plugins_url($editor_css, __FILE__),
+        array(),
+        filemtime("$dir/$editor_css")
+   );
+
    register_block_type('woo-berg/cart', array(
         'api_version' => 2,
         'editor_script' => 'cart-block-editor',
+        'editor_style'  => 'cart-block-css',
+        'style'         => 'cart-block-css',
         'render_callback' => 'render_cart_block', 
+        'attributes' => array (
+            'cartStyleClases' => array (
+                'type' => 'string',
+                'default' => 'wooberg-cart'
+            )
+        )
+
    ));
 
+}
+
+function render_cart_block($block_attributes, $content){
+    
+    $cartStyleClases = $block_attributes['cartStyleClases'];
+
+    return "
+
+        <div class=\"$cartStyleClases\">
+            <p>What the fuck</p>
+        </div>
+
+    " ;
 }

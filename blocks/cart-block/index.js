@@ -1,10 +1,10 @@
 (function ( blocks, blockEditor, element, components){
 	var registerBlockType = blocks.registerBlockType;
 	var el = element.createElement;
-
+	var useBlockProps = blockEditor.useBlockProps;
 
 	var __ = wp.i18n.__;
-	
+
 	registerBlockType('woo-berg/cart', {
 		apiVersion: 2,
 		title: __( 'Cart', 'woo-berg' ),
@@ -12,13 +12,35 @@
 		icon: 'text',
 		keywords: [ __( 'woo' ), __( 'Cart' ) ],
 
+		attributes: {
+			cartStyleClases : {
+				type: 'string', 
+				default: 'wooberg-cart'
+			}
+		},
+
 		edit: function ( props ){
+			var blockProps = useBlockProps();
 
 			return el(
-				'p',
-				{},
-				'I am cool'
+				'div',
+				blockProps,
+				el (
+					'div',
+					{
+						className: props.attributes.cartStyleClases,
+					},
+					el (
+						'p',
+						{},
+						'what the fuck'
+					)
+				)
+
 			);
+		},
+		save: function(){
+			return null
 		}
 
 
