@@ -41,15 +41,16 @@ function register_add_to_cart_block(){
         filemtime( "$dir/$style_css" )
     );
 
-    register_block_type( 'woo-berg/login', array(
+    /*register_block_type( 'woo-berg/login', array(
         'api_version' => 2,
         'editor_script' => 'add-to-cart-block-editor',
         'editor_style'  => 'add-to-cart-block-editor',
         'style'         => 'add-to-cart-block',
-    ) );
+    ) );*/
 
 
     register_block_type('woo-berg/add-to-cart', array(
+        'api_version' => 2,
         'editor_script' => 'add-to-cart-block-editor',
         'render_callback' => 'render_add_to_cart',
         'attributes' => array(

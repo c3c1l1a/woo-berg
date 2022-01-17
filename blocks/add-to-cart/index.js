@@ -84,7 +84,10 @@
 	});
 
 } )(
-	window.wp.blocks, window.wp.blockEditor, window.wp.element, window.wp.components
+	window.wp.blocks, 
+	window.wp.blockEditor, 
+	window.wp.element, 
+	window.wp.components
 );
 
 
