@@ -53,7 +53,8 @@ function render_cart_block($block_attributes, $content){
     return "
 
         <div class=\"$cartStyleClases\">
-            <p>What the fuck</p>
+            <p>Cart</p>
+            <p>x</p>
         </div>
 
     " ;

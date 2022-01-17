@@ -33,7 +33,12 @@
 					el (
 						'p',
 						{},
-						'what the fuck'
+						'Cart'
+					),
+					el (
+						'p',
+						{},
+						'x'
 					)
 				)
 

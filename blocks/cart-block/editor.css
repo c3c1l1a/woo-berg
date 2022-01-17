@@ -5,9 +5,43 @@
 
 
 .wooberg-cart  {
-  position: relative;
+  position: absolute;
   width: 370px;
   height: 430px;
+  top:  0px;
+  right:  0px;
+  z-index: 3000;
 
-  background: red;
+  box-shadow: 10px -10px 20px 1px #bfa56d;
+  background: #fff;
+
+
+
+}
+
+.wooberg-cart p:first-child {
+  position: absolute;
+  width: 109px;
+  height: 20px;
+  left: 20px;
+  top: 19px;
+
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+}
+
+.wooberg-cart p:nth-child(2)  {
+  position: absolute;
+  width: 13px;
+  height: 9px;
+  left: 337px;
+  top: 25px;
+
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+  
 }
