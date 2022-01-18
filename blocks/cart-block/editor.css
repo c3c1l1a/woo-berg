@@ -5,19 +5,54 @@
 
 
 .wooberg-cart  {
+  display: none;
   position: absolute;
   width: 370px;
   height: 430px;
-  top:  30px;
+  top:  0px;
   right:  0px;
   z-index: 3000;
-
+  
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  
   box-shadow: 10px -10px 20px 1px #bfa56d;
   background: #fff;
-
-
-
+  
 }
+
+.wooberg-cart-slide-in {
+  -webkit-animation: slideIn 0.2s forwards;
+  animation: slideIn 0.2s forwards;
+}
+
+.wooberg-cart-slide-out {
+  right: 0px !important;
+  -webkit-animation: slideOut 0.2s forwards;
+  animation: slideOut 0.2s forwards;
+}
+
+
+@-webkit-keyframes slideIn {
+  100% { -webkit-transform: translateX(0%); }
+  
+}
+
+@keyframes slideIn {
+  100% { transform: translateX(0%); }
+}
+
+
+@-webkit-keyframes slideOut {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(100%); }
+}
+
+@keyframes slideOut {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(100%); }
+}
+
 
 .wooberg-cart p:first-child {
   position: absolute;
@@ -26,6 +61,7 @@
   left: 20px;
   top: 19px;
 
+  cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -38,6 +74,7 @@
   height: 9px;
   left: 337px;
   top: 25px;
+
 
   font-size: 16px;
   font-weight: bold;
