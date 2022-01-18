@@ -47,7 +47,16 @@ function register_cart_block(){
 }
 
 function render_cart_block($block_attributes, $content){
+
+
+    $products_in_cart = "";
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ){
+        $product_name = $cart_item['data']->name;
+        $products_in_cart .= "<div>$product_name</div>";
+    }
     
+
     $cartStyleClases = $block_attributes['cartStyleClases'];
 
     return "
@@ -55,6 +64,7 @@ function render_cart_block($block_attributes, $content){
         <div class=\"$cartStyleClases\">
             <p>Cart</p>
             <p>x</p>
+            $products_in_cart
         </div>
 
     " ;
