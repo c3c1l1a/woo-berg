@@ -59,3 +59,20 @@ function render_cart_block($block_attributes, $content){
 
     " ;
 }
+
+
+function cart_js(){
+    $dir = dirname( __FILE__ );
+    $cart_js = 'cart.js';
+
+    wp_enqueue_script(
+        'cart_js',
+        plugins_url( $cart_js, __FILE__ ),
+        array(
+            'jquery'
+        ),
+        filemtime( "$dir/$cart_js" )
+    );
+
+}
+add_action('wp_enqueue_scripts', 'cart_js');

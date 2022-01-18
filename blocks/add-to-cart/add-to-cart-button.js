@@ -17,7 +17,8 @@
 					url: wc_add_to_cart_params.ajax_url,
 					type: 'POST',
 					data: data,
-					success: function() {
+					success: function( response) {
+					
 		                $(document.body).trigger('added_to_cart');
 		    		}
 				});
@@ -28,9 +29,7 @@
 
 		});
 
-		$(document.body).on( 'added_to_cart', function(event){
-			alert('yeah');
-		});
+		
 
 		
 	});

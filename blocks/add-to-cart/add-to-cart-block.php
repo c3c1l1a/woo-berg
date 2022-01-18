@@ -78,15 +78,19 @@ function render_add_to_cart( $block_attributes, $content ){
     $product_id = get_the_ID();
 
     
-    
-    return 
-        "<a class=\"$buttonStyleClasses\" data-product-id=$product_id>
-            <span>
-                Add To cart
-            </span>
-        </a>";
+    $price = get_post_meta( get_the_ID(), '_regular_price', true);
 
-    //$price = get_post_meta( get_the_ID(), '_regular_price', true);
+
+    if ($price ){
+        return 
+            "<a class=\"$buttonStyleClasses\" data-product-id=$product_id>
+                <span>
+                    Add To cart
+                </span>
+            </a>";
+
+    }
+
 
     //$currency = get_woocommerce_currency_symbol();
 
@@ -114,7 +118,19 @@ add_action('wp_enqueue_scripts', 'add_to_cart_button_js');
 
 
 function wooberg_ajax_add_to_cart(){
-    error_log(print_r('testing again', true));
+
+    $product_id = (int) $_POST['product_id'];
+    $quantity = ($_POST['quantity']) ? (int) $_POST['quantity'] : 1;
+
+    if ($product_id) {
+
+        WC()->cart->add_to_cart( $product_id);
+        
+    }
+
+
+    
+    wp_die();
 }
 add_action('wp_ajax_wooberg_ajax_add_to_cart', 'wooberg_ajax_add_to_cart');
 add_action('wp_ajax_nopriv_wooberg_ajax_add_to_cart', 'wooberg_ajax_add_to_cart');
