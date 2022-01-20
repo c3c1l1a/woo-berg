@@ -37,8 +37,11 @@ function register_cart_block(){
         'render_callback' => 'render_cart_block', 
         'attributes' => array (
             'cartStyleClases' => array (
-                'type' => 'string',
-                'default' => 'wooberg-cart'
+                'type' => 'object',
+                'default' => array( 
+                    'wooberg_cart' => 'wooberg-cart',
+                    'wooberg_cart_product' => 'wooberg-cart-product'
+                )
             )
         )
 
@@ -51,16 +54,32 @@ function render_cart_block($block_attributes, $content){
     if (WC()->cart){
         
         $products_in_cart = "";
-
+        $wooberg_cart_product_class = $block_attributes['cartStyleClases']['wooberg_cart_product'];
+        
         foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ){
             $product_name = $cart_item['data']->name;
-            $products_in_cart .= "<div>$product_name</div>";
+            $products_in_cart .= 
+            "<div class=\"$wooberg_cart_product_class\">
+                <img/>
+                <div>
+                    <p>Title</p>
+                    <div>
+                        <p>-</p>
+                        <p>2</p>
+                        <p>+</p>
+                    </div>
+                </div>
+                <div>
+                    <img/>
+                    <p>$45</p>
+                </div>
+            </div>";
         }
-        $cartStyleClases = $block_attributes['cartStyleClases'];
+        $wooberg_cart_class = $block_attributes['cartStyleClases']['wooberg_cart'];
 
         return "
 
-            <div class=\"$cartStyleClases\">
+            <div class=\"$wooberg_cart_class\">
                 <p>Cart</p>
                 <p>x</p>
                 $products_in_cart

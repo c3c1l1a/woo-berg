@@ -14,13 +14,18 @@
 
 		attributes: {
 			cartStyleClases : {
-				type: 'string', 
-				default: 'wooberg-cart'
+				type: 'object', 
+				default: {
+					'wooberg_cart': 'wooberg-cart',
+					'wooberg_cart_product': 'wooberg-cart-product'
+				}
 			}
 		},
 
 		edit: function ( props ){
 			var blockProps = useBlockProps();
+
+			
 
 			return el(
 				'div',
@@ -28,7 +33,7 @@
 				el (
 					'div',
 					{
-						className: props.attributes.cartStyleClases,
+						className: props.attributes.cartStyleClases.wooberg_cart,
 					},
 					el (
 						'p',
@@ -39,6 +44,50 @@
 						'p',
 						{},
 						'x'
+					),
+					el(
+						'div',
+						{
+							className: props.attributes.cartStyleClases.wooberg_cart_product
+						},
+						el ( 
+							'img', {}, 
+						),
+						el ( 
+							'div', {}, 
+							el(
+								'p', {}, 'Title'
+							),
+							el (
+								'div',
+								{},
+								el(
+									'p', {}, '-'
+								), 
+								el(
+									'p', {}, '2'
+								),
+								el(
+									'p', {}, '+'
+								),
+
+							)
+
+						),
+						el ( 'div', {}, 
+							el(
+								'img',
+								{},
+								
+							),
+							el (
+								'p',
+								{},
+								'$45'
+							)
+
+						)
+
 					)
 				)
 
