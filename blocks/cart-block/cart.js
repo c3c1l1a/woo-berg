@@ -11,6 +11,8 @@
 			
 			wooberg_cart.addClass('wooberg-cart-slide-in');
 			wooberg_cart.show();
+		
+			$("#wooberg-cart-product-container").load(location.href + "wooberg-cart-product-container");
 			
 		});
 

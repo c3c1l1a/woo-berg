@@ -50,28 +50,36 @@ function register_cart_block(){
 }
 
 function render_cart_block($block_attributes, $content){
+    $currency = get_woocommerce_currency_symbol();
 
     if (WC()->cart){
         
         $products_in_cart = "";
         $wooberg_cart_product_class = $block_attributes['cartStyleClases']['wooberg_cart_product'];
+
         
         foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ){
             $product_name = $cart_item['data']->name;
+            $product_quantity = $cart_item['quantity'];
+            $total = $currency . $cart_item['line_subtotal'];
+            $image_id = (int)$cart_item['data']->image_id;
+            $image = wp_get_attachment_image_src($image_id)[0];
+            
             $products_in_cart .= 
             "<div class=\"$wooberg_cart_product_class\">
-                <img/>
+                <img src=\"$image\"/>
                 <div>
-                    <p>Title</p>
+                    <p>$product_name</p>
                     <div>
-                        <p>-</p>
-                        <p>2</p>
-                        <p>+</p>
+                        
+                        <span class=\"dashicons dashicons-minus\"></span>
+                        <p>$product_quantity</p>
+                        <span class=\"dashicons dashicons-plus\"></span>
                     </div>
                 </div>
                 <div>
                     <img/>
-                    <p>$45</p>
+                    <p>$total</p>
                 </div>
             </div>";
         }
@@ -79,10 +87,12 @@ function render_cart_block($block_attributes, $content){
 
         return "
 
-            <div class=\"$wooberg_cart_class\">
+            <div  class=\"$wooberg_cart_class\">
                 <p>Cart</p>
                 <p>x</p>
-                $products_in_cart
+                <div id=\"wooberg-cart-product-container\" class=\"wooberg-cart-product-container\">
+                    $products_in_cart
+                </div>
             </div>
 
         " ;
