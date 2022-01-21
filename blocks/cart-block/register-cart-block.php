@@ -71,7 +71,6 @@ function render_cart_block($block_attributes, $content){
                 <div>
                     <p>$product_name</p>
                     <div>
-                        
                         <span class=\"dashicons dashicons-minus\"></span>
                         <p>$product_quantity</p>
                         <span class=\"dashicons dashicons-plus\"></span>
