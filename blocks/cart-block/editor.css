@@ -5,7 +5,7 @@
 
 
 .wooberg-cart  {
-  display: none;
+  /*display: none;*/
   position: absolute;
   width: 370px;
   height: 430px;
@@ -234,7 +234,7 @@
   > img:first-child
   {
     flex-grow: 2;
-    background: #f2f2f2;
+    background: red;
     border-radius: 5px;
 }
 
