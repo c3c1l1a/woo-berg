@@ -120,7 +120,7 @@ function blocks_init() {
 	));
 
 
-	register_image_block();
+	
 	register_price_block();
 	register_add_to_cart_block();
 	register_cart_block();
