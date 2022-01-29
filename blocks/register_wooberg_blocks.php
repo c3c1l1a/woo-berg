@@ -16,6 +16,7 @@ function register_wooberg_blocks(){
     // Register wooberg blocks only on wooberg post type
     if (is_admin()){
         $typenow = '';
+        $post_id = null;
         if ( 'post-new.php' === $pagenow ) {
             if ( isset( $_REQUEST['post_type'] ) && post_type_exists( $_REQUEST['post_type'] ) ) {
                 $typenow = $_REQUEST['post_type'];

@@ -87,17 +87,26 @@ function product_template_metabox() {
 	$tid=get_post_meta($post->ID,"wooberg_template_post_id",TRUE);
 	$vars["wooberg_template_post_id"]=$tid;
 
-	$pages=get_pages();
-	foreach ($pages as $page)
-		$vars["pages"][$page->ID]=$page->post_title;
+	$args = array(
+		'numberposts' => -1,
+	    'post_type'=> 'wooberg',	
+	);    
+	$wooberg_posts = get_posts($args);
+	
 
+	if ($wooberg_posts){
+		foreach ($wooberg_posts as $wooberg_post)
+			$vars["pages"][$wooberg_post->ID]=$wooberg_post->post_title;
+	
+	}
+	
 	display_template(__DIR__."/../templates/product-metabox.tpl.php",$vars);
 }
 
 function add_meta_boxes() {
 	add_meta_box(
 		"product_template",
-		"WooBerg Template",
+		"Wooberg Template",
 		"wooberg\\product_template_metabox",
 		"product",
 		"side"
