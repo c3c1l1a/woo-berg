@@ -7,18 +7,23 @@
 
 	var __ = wp.i18n.__;
 	
-	registerBlockType('woo-berg/product-image', {
+	registerBlockType('wooberg/wooberg-image', {
 		apiVersion: 2,
-		title: __( 'Product Image', 'woo-berg' ),
-		description: __('Edit woo-commerce product image', 'woo-berg'),
-		icon: 'text',
-		keywords: [ __( 'woo' ), __( 'product-image' ) ],
-
+		title: __( 'Wooberg Image', 'wooberg' ),
+		description: __('Edit wooberg image', 'wooberg'),
+		icon: 'format-image',
+		keywords: [ __( 'wooberg' ), __( 'wooberg-image' ) ],
+		attributes: {
+			imageSrc : {
+				type: 'string',
+				default: js_data.featured_image
+			}
+		},
 
 		edit: function( props ){
-
+			console.log(props.attributes.imageSrc);
 			return el( 'img', {
-				src: js_data.featured_image,
+				src: props.attributes.imageSrc,
 			} );
 
 		},

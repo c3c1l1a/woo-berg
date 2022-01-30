@@ -6,7 +6,7 @@
  */
 
 
-require_once __DIR__."/product-image/register-product-image-block.php";
+require_once __DIR__."/wooberg-image/register-wooberg-image-block.php";
 
 
 function register_wooberg_blocks(){
@@ -47,6 +47,6 @@ function register_wooberg_blocks(){
 
 
   
-    register_image_block();
+    register_wooberg_image_block();
 
 }
