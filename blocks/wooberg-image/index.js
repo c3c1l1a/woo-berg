@@ -17,13 +17,19 @@
 			imageSrc : {
 				type: 'string',
 				default: js_data.featured_image
+			},
+			border_black : {
+				type: 'string',
+				default: 'w-32', 
 			}
+
 		},
 
 		edit: function( props ){
 			console.log(props.attributes.imageSrc);
 			return el( 'img', {
 				src: props.attributes.imageSrc,
+				className: props.attributes.border_black
 			} );
 
 		},

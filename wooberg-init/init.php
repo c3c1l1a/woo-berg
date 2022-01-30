@@ -32,3 +32,16 @@ function init(){
 
 }
 add_action('init', 'wooberg\\init');
+
+
+function enqueue_block_assets(){
+    $blocks_css = '/../css/styles.prod.css';
+
+    wp_enqueue_style(
+        'wooberg_block_styles',
+        plugins_url( $blocks_css, __FILE__ ),
+        array(),
+    );
+}
+
+add_action( 'enqueue_block_assets', 'wooberg\\enqueue_block_assets' );

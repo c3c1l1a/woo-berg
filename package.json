@@ -1,0 +1,27 @@
+{
+  "name": "wooberg",
+  "version": "1.0.0",
+  "description": "Styling for wooberg",
+  "main": "styles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "TAILWIND_MODE=watch postcss css/tailwind.css -o css/styles.prod.css -w",
+    "prod": "NODE_ENV=production TAILWIND_MODE=build postcss css/tailwind.css -o css/styles.prod.css"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c3c1l1a/woo-berg.git"
+  },
+  "author": "c3c1l1a",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c3c1l1a/woo-berg/issues"
+  },
+  "homepage": "https://github.com/c3c1l1a/woo-berg#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18"
+  }
+}
