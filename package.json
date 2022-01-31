@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "TAILWIND_MODE=watch postcss css/tailwind.css -o css/styles.prod.css -w",
     "prod": "NODE_ENV=production TAILWIND_MODE=build postcss css/tailwind.css -o css/styles.prod.css"
-
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
+    "postcss-nested": "^5.0.6",
     "tailwindcss": "^3.0.18"
   }
 }

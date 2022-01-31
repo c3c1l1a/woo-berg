@@ -1,9 +1,14 @@
-( function( blocks, blockEditor, element ) {
+( function( blocks, blockEditor, element, components ) {
 
 	var registerBlockType = blocks.registerBlockType;
-	var RichText = blockEditor.RichText;
 	var el = element.createElement;
 	var useBlockProps = blockEditor.useBlockProps;
+	var InspectorControls = blockEditor.InspectorControls;
+	var PanelBody = components.PanelBody;
+	var ColorPalette = components.ColorPalette;
+
+
+
 
 	var __ = wp.i18n.__;
 	
@@ -20,17 +25,66 @@
 			},
 			border_black : {
 				type: 'string',
-				default: 'w-32', 
+				default: '', 
 			}
 
 		},
+		styles: [
+			{
+				name: 'wooberg-product-gallery wooberg-product-gallery-1',
+				label: __('1'),
+				isDefault: true
+
+			}
+
+		],
 
 		edit: function( props ){
-			console.log(props.attributes.imageSrc);
-			return el( 'img', {
-				src: props.attributes.imageSrc,
-				className: props.attributes.border_black
-			} );
+			var blockProps = useBlockProps();
+
+			function onChange_background_color(bg_color){
+				props.setAttributes({ 'style': {
+					'background-color': bg_color,
+				} });
+			}
+
+
+			return  el( 'div', 
+				blockProps, 
+				el( InspectorControls,
+					{ key: 'background-color' },
+					el(
+						PanelBody,
+						{
+							title: 'Background Color',
+							initialOpen: false,
+
+						},
+						el(
+							ColorPalette,
+							{
+								onChange: onChange_background_color,
+							}
+						)
+					), 
+				),
+				el( 'img', {
+					src: props.attributes.imageSrc,
+				} ),
+				el( 'div', 
+					{}, 
+					el( 'img', {
+						src: props.attributes.imageSrc,
+					} ),
+					el( 'img', {
+						src: props.attributes.imageSrc,
+					} ),
+					el( 'img', {
+						src: props.attributes.imageSrc,
+					} )
+				)
+				
+			); 
 
 		},
 		save: function( props ){
@@ -39,5 +93,8 @@
 	});
 
 } )(
-	window.wp.blocks, window.wp.blockEditor, window.wp.element
+	window.wp.blocks, 
+	window.wp.blockEditor, 
+	window.wp.element,
+	window.wp.components
 );

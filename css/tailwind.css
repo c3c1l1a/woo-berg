@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.wooberg-product-gallery-1 {
+	@apply  flex flex-col flex-nowrap gap-4;
+}
+
+.wooberg-product-gallery-1 > img {
+	@apply shadow-md shadow-cyan-300 ;
+}
+
+.wooberg-product-gallery-1 > div {
+	@apply  flex flex-row flex-nowrap gap-4 justify-center;
+}
+
+.wooberg-product-gallery-1 > div  > * {
+	@apply w-1/4;
+}
+
+
+

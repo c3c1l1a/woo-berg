@@ -468,6 +468,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.w-32 {
-  width: 8rem;
+.wooberg-product-gallery-1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
+
+.wooberg-product-gallery-1 > img {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #67e8f9;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.wooberg-product-gallery-1 > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.wooberg-product-gallery-1 > div  > * {
+  width: 25%;
+}
+
+
+
