@@ -3,12 +3,8 @@
 	var registerBlockType = blocks.registerBlockType;
 	var el = element.createElement;
 	var useBlockProps = blockEditor.useBlockProps;
-	var InspectorControls = blockEditor.InspectorControls;
-	var PanelBody = components.PanelBody;
-	var ColorPalette = components.ColorPalette;
-
-
-
+	var MediaUpload = blockEditor.MediaUpload;
+	var Button = components.Button;
 
 	var __ = wp.i18n.__;
 	
@@ -21,72 +17,49 @@
 		attributes: {
 			imageSrc : {
 				type: 'string',
-				default: js_data.featured_image
 			},
-			border_black : {
-				type: 'string',
-				default: '', 
-			}
 
 		},
-		styles: [
-			{
-				name: 'wooberg-product-gallery wooberg-product-gallery-1',
-				label: __('1'),
-				isDefault: true
-
-			}
-
-		],
-
 		edit: function( props ){
 			var blockProps = useBlockProps();
 
-			function onChange_background_color(bg_color){
-				props.setAttributes({ 'style': {
-					'background-color': bg_color,
-				} });
-			}
+			return el( 'div', 
+						blockProps,
+						el( MediaUpload, {
+							onSelect: function(value){
+								props.setAttributes({
+								    imageSrc: value.sizes.full.url,
+								})
+								
+							}, 
+							render: function( {open:open} ){
 
+								if(!props.attributes.imageSrc){
+									return el( Button, {
+											onClick: open,
+											className: 'wb-editor-btn-primary'
+										},
+										'Choose image'
+									);
+								} else {
+									return [ el( 'img', {
+												src: props.attributes.imageSrc,
+												onClick: open
+											}),
+											
+									];
 
-			return  el( 'div', 
-				blockProps, 
-				el( InspectorControls,
-					{ key: 'background-color' },
-					el(
-						PanelBody,
-						{
-							title: 'Background Color',
-							initialOpen: false,
-
-						},
-						el(
-							ColorPalette,
-							{
-								onChange: onChange_background_color,
+								}
+								
 							}
-						)
-					), 
-				),
-				el( 'img', {
-					src: props.attributes.imageSrc,
-				} ),
-				el( 'div', 
-					{}, 
-					el( 'img', {
-						src: props.attributes.imageSrc,
-					} ),
-					el( 'img', {
-						src: props.attributes.imageSrc,
-					} ),
-					el( 'img', {
-						src: props.attributes.imageSrc,
-					} )
-				)
+						}) 
+				);  
+
+			
 				
-			); 
 
 		},
+
 		save: function( props ){
 			return null;
 		}, 
