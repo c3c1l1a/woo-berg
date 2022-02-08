@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  content: ['./blocks/wooberg-image/index.js'],
+  content: ['./blocks/**/*.js'],
   theme: {
     extend: {},
   },

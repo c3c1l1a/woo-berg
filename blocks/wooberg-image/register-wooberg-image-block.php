@@ -2,7 +2,7 @@
 /**
  * Register Image Block
  *
- * @package woo-berg
+ * @package wooberg
  */
 
 function register_wooberg_image_block(){
@@ -20,16 +20,6 @@ function register_wooberg_image_block(){
         filemtime( "$dir/$wooberg_image_block_js" )
     );
 
-    $defaultImg = plugins_url( 'assets/woocommerce-placeholder.png', __FILE__ );
-
-    wp_localize_script(
-        'wooberg-image-block-editor',
-        'js_data',
-        array(
-            'featured_image' => $defaultImg
-        )
-    );
-
     register_block_type('wooberg/wooberg-image', array(
         'api_version' => 2,
         'editor_script' => 'wooberg-image-block-editor',
@@ -37,7 +27,6 @@ function register_wooberg_image_block(){
         'attributes' => array(
             'imageSrc' => array(
                 'type' => 'string',
-                'default'=> $defaultImg
             )
         )
     ));

@@ -13,7 +13,7 @@
 		title: __( 'Wooberg Image', 'wooberg' ),
 		description: __('Edit wooberg image', 'wooberg'),
 		icon: 'format-image',
-		keywords: [ __( 'wooberg' ), __( 'wooberg-image' ) ],
+		keywords: [ __( 'wooberg' ), __( 'wooberg image' ) ],
 		attributes: {
 			imageSrc : {
 				type: 'string',
@@ -35,12 +35,19 @@
 							render: function( {open:open} ){
 
 								if(!props.attributes.imageSrc){
-									return el( Button, {
-											onClick: open,
-											className: 'wb-editor-btn-primary'
+									return el( 'div', {
+											className: 'wb-editor-media-upload'
 										},
-										'Choose image'
+										el( Button, {
+												onClick: open,
+												className: 'wb-editor-btn-primary'
+											},
+											'Choose image'
+										)
+
 									);
+
+									
 								} else {
 									return [ el( 'img', {
 												src: props.attributes.imageSrc,

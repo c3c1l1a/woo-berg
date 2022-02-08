@@ -5,7 +5,17 @@
 
 @layer components {
 	.wb-editor-btn-primary {
-		@apply bg-cyan-600;
+		@apply bg-cyan-300;
 	}
+	
+	.wb-editor-media-upload {
+		@apply  grid w-32 h-32 bg-gray-600 place-items-center;
+	}
+
+	.wb-product-gallery {
+		@apply bg-cyan-300;
+	}
+
 }
+
 
