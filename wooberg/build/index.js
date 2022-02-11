@@ -1,1 +1,29 @@
-(()=>{var e=(r=>typeof require!="undefined"?require:typeof Proxy!="undefined"?new Proxy(r,{get:(u,d)=>(typeof require!="undefined"?require:u)[d]}):r)(function(r){if(typeof require!="undefined")return require.apply(this,arguments);throw new Error('Dynamic require of "'+r+'" is not supported')});var n=e("wp.blocks");var p=e("wp.i18n"),i=e("wp.block-editor");function o(){return React.createElement("p",{...(0,i.useBlockProps)()},(0,p.__)("Gutenpride \u2013 hello from the editor!","gutenpride"))}var m=e("wp.i18n"),f=e("wp.block-editor");function t(){return React.createElement("p",{...f.useBlockProps.save()},(0,m.__)("Gutenpride \u2013 hello from the saved content!","gutenpride"))}(0,n.registerBlockType)("create-block/gutenpride",{edit:o,save:t});})();
+(() => {
+  // src/wp-shim.js
+  var useBlockProps = window.wp.blockEditor.useBlockProps;
+  var __ = window.wp.i18n.__;
+
+  // src/edit.js
+  function Edit() {
+    return /* @__PURE__ */ React.createElement("p", {
+      ...useBlockProps()
+    }, __("Gutenpride \u2013 hello from the editor!", "gutenpride"));
+  }
+
+  // src/save.js
+  var __2 = window.wp.i18n.__;
+  var useBlockProps2 = window.wp.blocks.useBlockProps;
+  function save() {
+    return /* @__PURE__ */ React.createElement("p", null, __2("Gutenpride \u2013 hello from the saved content!", "gutenpride"));
+  }
+
+  // src/index.js
+  var registerBlockType = window.wp.blocks.registerBlockType;
+  registerBlockType("wooberg/wooberg-test", {
+    edit: Edit,
+    save,
+    apiVersion: 2,
+    title: "Wooberg Test",
+    description: "This is for testing..."
+  });
+})();

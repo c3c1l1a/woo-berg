@@ -3,7 +3,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from 'wp.i18n';
+//import { __ } from 'wp.i18n';
+const __ = window.wp.i18n.__;
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +12,8 @@ import { __ } from 'wp.i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from 'wp.block-editor';
+//import { useBlockProps } from 'wp.block-editor';
+const useBlockProps = window.wp.blocks.useBlockProps;
 
 /**
  * The save function defines the way in which the different attributes should
@@ -24,7 +26,7 @@ import { useBlockProps } from 'wp.block-editor';
  */
 export default function save() {
 	return (
-		<p {...useBlockProps.save()}>
+		<p /*{...useBlockProps.save()}*/>
 			{__('Gutenpride – hello from the saved content!', 'gutenpride')}
 		</p>
 	);

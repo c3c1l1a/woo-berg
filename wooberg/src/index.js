@@ -25,7 +25,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-window.wp.blocks.registerBlockType('create-block/gutenpride', {
+registerBlockType('wooberg/wooberg-test', {
 	/**
 	 * @see ./edit.js
 	 */
@@ -35,4 +35,9 @@ window.wp.blocks.registerBlockType('create-block/gutenpride', {
 	 * @see ./save.js
 	 */
 	save,
+
+	apiVersion: 2,
+	title: 'Wooberg Test',
+	description: 'This is for testing...'
+
 });

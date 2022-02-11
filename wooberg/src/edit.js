@@ -3,7 +3,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from 'wp.i18n';
+//import { __ } from 'wp.i18n';
+//const __ = window.wp.i18n.__;
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +12,7 @@ import { __ } from 'wp.i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from 'wp.block-editor';
+import { useBlockProps,__ } from './wp-shim.js';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.

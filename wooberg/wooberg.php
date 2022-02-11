@@ -21,6 +21,24 @@
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function create_blocks() {
-        register_block_type( __DIR__ . '/build' );
+//	error_log("creating block: ".__DIR__ . '/build');
+//	register_block_type( __DIR__ . '/build/block.json' );
+//	register_block_type( __DIR__ . '/build/block.jsonawef' );
+
+    wp_register_script(
+        'wooberg-test-block',
+        plugins_url( "build/index.js", __FILE__ ),
+        array(
+            'wp-blocks',
+            'wp-i18n',
+            'wp-element',
+            'wp-editor',
+        )
+    );
+
+    register_block_type('wooberg/wooberg-test', array(
+        'api_version' => 2,
+        'editor_script' => 'wooberg-test-block',
+    ));
 }
 add_action( 'init', 'create_blocks' );
