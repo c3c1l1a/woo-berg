@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wooberg/Gallery",
+	"version": "0.1.0",
+	"title": "Wooberg Gallery",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "wooberg Gallery.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wooberg",
+	"editorScript": "file:./index.js",
+}
